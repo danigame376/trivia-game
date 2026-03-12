@@ -1,6 +1,7 @@
 import random
 
 MAX_POINTS = N_QUESTION = 5
+STEPS_POINT = 1
 
 
 questions = {
@@ -26,8 +27,8 @@ def main():
     for i, question in enumerate(q_selected):
         answer = input(f"Question {i + 1}: {question} ").lower().strip()
         if answer == questions[question]:
-            print("correct! +10\n")
-            points_counter += 1
+            print(f"correct! +{STEPS_POINT}\n")
+            points_counter += STEPS_POINT
             print(f"you now have {points_counter} points\n")
 
             if points_counter == MAX_POINTS:
@@ -41,7 +42,7 @@ def main():
             print(f"Wrong! the correct anwer is: {questions[question]}\n")
 
     if points_counter < MAX_POINTS:
-        print(f"You loose!, yuor score is {points_counter}/{MAX_POINTS}")
+        print(f"You lose!, yuor score is {points_counter}/{MAX_POINTS}")
         print("=== CLOSING GAME ===")
 
 
