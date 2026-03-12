@@ -16,19 +16,15 @@ questions = {
 
 def main():
     points_counter = 0
-    print("=== TRIVIA GAME 1.0 ===")
+    print("\n=== TRIVIA GAME 1.0 ===")
     print("press q to exit\n")
 
     q_selected = list(questions.keys())
     random.shuffle(q_selected)
-    for question in q_selected:
-        if question == q_selected[-1]:
-            print("\nYou loose!")
-            print("=== CLOSING GAME ===")
-            break
-        risposta = input(question + " ")
+    for i, question in enumerate(q_selected):
+        risposta = input(f"Question {i + 1}: {question} ")
         if risposta == questions[question]:
-            print("correct! +10")
+            print("correct! +10\n")
             points_counter += 10
             print(f"you now have {points_counter} points\n")
 
@@ -38,11 +34,14 @@ def main():
                 break
         elif risposta == "q":
             break
-        else:
-            print("Wrong! Try again!")
-        
-        
 
+        elif risposta != questions[question]:
+            print("Wrong! Try again!\n")
+
+            if question == q_selected[-1]:
+                print("You loose!")
+                print("=== CLOSING GAME ===")
+                break
 
 
 if __name__ == "__main__":
