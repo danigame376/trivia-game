@@ -1,7 +1,6 @@
 import random
 
-N_QUESTION=5
-MAX_POINTS=30
+MAX_POINTS = N_QUESTION = 5
 
 
 questions = {
@@ -28,7 +27,7 @@ def main():
         answer = input(f"Question {i + 1}: {question} ").lower().strip()
         if answer == questions[question]:
             print("correct! +10\n")
-            points_counter += 10
+            points_counter += 1
             print(f"you now have {points_counter} points\n")
 
             if points_counter == MAX_POINTS:
@@ -42,7 +41,7 @@ def main():
             print(f"Wrong! the correct anwer is: {questions[question]}\n")
 
     if points_counter < MAX_POINTS:
-        print("You loose!")
+        print(f"You loose!, yuor score is {points_counter}/{MAX_POINTS}")
         print("=== CLOSING GAME ===")
 
 
