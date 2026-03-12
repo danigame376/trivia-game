@@ -19,21 +19,30 @@ def main():
     print("=== TRIVIA GAME 1.0 ===")
     print("press q to exit\n")
 
-    while True:
-        q_selected = random.choice(list(questions.keys()))
-        risposta = input(q_selected + " ")
-        if risposta == questions[q_selected]:
+    q_selected = list(questions.keys())
+    random.shuffle(q_selected)
+    for question in q_selected:
+        if question == q_selected[-1]:
+            print("\nYou loose!")
+            print("=== CLOSING GAME ===")
+            break
+        risposta = input(question + " ")
+        if risposta == questions[question]:
             print("correct! +10")
             points_counter += 10
             print(f"you now have {points_counter} points\n")
 
             if points_counter == 50:
                 print("YOU WIN!")
+                print("=== CLOSING GAME ===")
                 break
         elif risposta == "q":
             break
         else:
             print("Wrong! Try again!")
+        
+        
+
 
 
 if __name__ == "__main__":
