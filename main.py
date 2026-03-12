@@ -1,5 +1,9 @@
 import random
 
+N_QUESTION=5
+MAX_POINTS=30
+
+
 questions = {
     "What is the keyword to define a function in Python?": "def",
     "Which data type is used to store True or False values?": "boolean",
@@ -19,29 +23,27 @@ def main():
     print("\n=== TRIVIA GAME 1.0 ===")
     print("press q to exit\n")
 
-    q_selected = list(questions.keys())
-    random.shuffle(q_selected)
+    q_selected = random.sample(list(questions.keys()), N_QUESTION)
     for i, question in enumerate(q_selected):
-        risposta = input(f"Question {i + 1}: {question} ")
-        if risposta == questions[question]:
+        answer = input(f"Question {i + 1}: {question} ").lower().strip()
+        if answer == questions[question]:
             print("correct! +10\n")
             points_counter += 10
             print(f"you now have {points_counter} points\n")
 
-            if points_counter == 50:
+            if points_counter == MAX_POINTS:
                 print("YOU WIN!")
                 print("=== CLOSING GAME ===")
                 break
-        elif risposta == "q":
+        elif answer == "q":
             break
 
-        elif risposta != questions[question]:
-            print("Wrong! Try again!\n")
+        elif answer != questions[question]:
+            print(f"Wrong! the correct anwer is: {questions[question]}\n")
 
-            if question == q_selected[-1]:
-                print("You loose!")
-                print("=== CLOSING GAME ===")
-                break
+    if points_counter < MAX_POINTS:
+        print("You loose!")
+        print("=== CLOSING GAME ===")
 
 
 if __name__ == "__main__":
