@@ -1,7 +1,8 @@
 import random
 
-MAX_POINTS = N_QUESTION = 5
-STEPS_POINT = 1
+N_QUESTION = 5
+MAX_POINTS = 3
+POINT_STEPS = 1
 
 
 questions = {
@@ -26,24 +27,26 @@ def main():
     q_selected = random.sample(list(questions.keys()), N_QUESTION)
     for i, question in enumerate(q_selected):
         answer = input(f"Question {i + 1}: {question} ").lower().strip()
-        if answer == questions[question]:
-            print(f"correct! +{STEPS_POINT}\n")
-            points_counter += STEPS_POINT
-            print(f"you now have {points_counter} points\n")
+
+        if answer == "q":
+            print("=== CLOSING GAME ===")
+            return
+
+        if answer == questions[question].lower():
+            print(f"correct! +{POINT_STEPS}")
+            points_counter += POINT_STEPS
+            print(f"you now have {points_counter}/{MAX_POINTS} points\n")
 
             if points_counter == MAX_POINTS:
                 print("YOU WIN!")
                 print("=== CLOSING GAME ===")
-                break
-        elif answer == "q":
-            break
+                return
+        else:
+            print(f"Wrong! the correct anwer is: {questions[question]}")
+            print(f"you now have {points_counter}/{MAX_POINTS} points\n")
 
-        elif answer != questions[question]:
-            print(f"Wrong! the correct anwer is: {questions[question]}\n")
-
-    if points_counter < MAX_POINTS:
-        print(f"You lose!, yuor score is {points_counter}/{MAX_POINTS}")
-        print("=== CLOSING GAME ===")
+    print(f"You lose!, yuor score is {points_counter}/{MAX_POINTS}")
+    print("=== CLOSING GAME ===")
 
 
 if __name__ == "__main__":
