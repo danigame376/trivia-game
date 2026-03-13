@@ -39,7 +39,7 @@ def check_answer(user_answer, question, points_counter):
         return POINT_STEPS
 
     else:
-        print(f"Wrong! the correct anwer is: {questions[question]}")
+        print(f"Wrong! the correct answer is: {questions[question]}")
         print(f"you still have {points_counter}/{MAX_POINTS} points\n")
         return 0
 
@@ -55,7 +55,7 @@ def print_win():
 
 
 def print_lose(points_counter):
-    print(f"You lose!, yuor score is {points_counter}/{MAX_POINTS}")
+    print(f"You lose!, your score is {points_counter}/{MAX_POINTS}")
     print("=== CLOSING GAME ===")
 
 
