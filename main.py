@@ -1,22 +1,14 @@
 import random
+import json
 
 N_QUESTION = 5
 MAX_POINTS = 3
 POINT_STEPS = 1
+FILENAME = "questions.json"
 
 
-questions = {
-    "What is the keyword to define a function in Python?": "def",
-    "Which data type is used to store True or False values?": "boolean",
-    "What is the correct file extension for Python files?": ".py",
-    "Which symbol is used to comment in Python?": "#",
-    "What function is used to get input from the user?": "input",
-    "How do you start a for loop in Python?": "for",
-    "What is the output of 2 ** 3 in Python?": "8",
-    "What keyword is used to import a module in Python?": "import",
-    "What does the len() function return?": "length",
-    "What is the result of 10 // 3 in Python?": "3",
-}
+with open(FILENAME, "r", encoding="utf-8") as file:
+    questions = json.load(file)
 
 
 def print_header():
